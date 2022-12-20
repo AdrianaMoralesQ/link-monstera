@@ -1,9 +1,11 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import supabase from "../utils/supabaseClient";
 
 export default function Login() {
 	const [email, setEmail] = useState<string | undefined>();
 	const [password, setPassword] = useState<string | undefined>();
+	const router = useRouter();
 
 	async function loginWithEmail() {
 		try {
@@ -15,12 +17,18 @@ export default function Login() {
 				if (resp.error) throw resp.error;
 				const userId = resp.data.user?.id;
 				console.log("userId:", userId);
+				router.push("/");
 			}
-		} catch {}
+		} catch (error) {
+			console.log("error:", error);
+		}
 	}
 
 	return (
 		<div className="flex flex-col e-full justify-center items-center">
+			<div>
+				<h2> Welcome back! </h2>
+			</div>
 			<label
 				htmlFor="email"
 				className="block text-sm font-medium text-grey-700 mt-4"
@@ -58,7 +66,7 @@ export default function Login() {
 				className="inline-flex items-center rounded-md border-transparent bg-indigo-600 px-4 py-2 text-sm mt-4"
 				onClick={loginWithEmail}
 			>
-				Sign up
+				Log in
 			</button>
 		</div>
 	);

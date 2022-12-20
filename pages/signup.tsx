@@ -16,7 +16,9 @@ export default function Signup() {
 				const userId = resp.data.user?.id;
 				console.log("userId:", userId);
 			}
-		} catch {}
+		} catch (error) {
+			console.log("error:", error);
+		}
 	}
 
 	return (
