@@ -1,14 +1,14 @@
 import { useState } from "react";
 import supabase from "../utils/supabaseClient";
 
-export default function Login() {
+export default function Signup() {
 	const [email, setEmail] = useState<string | undefined>();
 	const [password, setPassword] = useState<string | undefined>();
 
-	async function loginWithEmail() {
+	async function signUpWithEmail() {
 		try {
 			if (email && password) {
-				const resp = await supabase.auth.signInWithPassword({
+				const resp = await supabase.auth.signUp({
 					email: email,
 					password: password,
 				});
@@ -56,7 +56,7 @@ export default function Login() {
 			<button
 				type="button"
 				className="inline-flex items-center rounded-md border-transparent bg-indigo-600 px-4 py-2 text-sm mt-4"
-				onClick={loginWithEmail}
+				onClick={signUpWithEmail}
 			>
 				Sign up
 			</button>
