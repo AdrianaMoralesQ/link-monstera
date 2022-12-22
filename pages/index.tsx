@@ -158,12 +158,14 @@ export default function Home() {
 					</div>
 					<div className="flex flex-col e-full justify-center items-center mt-4">
 						<h1>Add a New Profile Picture</h1>
-						<Image
-							src={images[0]["data_url"]}
-							height={100}
-							width={100}
-							alt="profile picture"
-						/>
+						{images.length > 0 && (
+							<Image
+								src={images[0]["data_url"]}
+								height={100}
+								width={100}
+								alt="profile picture"
+							/>
+						)}
 						<ImageUploading
 							multiple
 							value={images}
