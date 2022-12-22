@@ -76,6 +76,32 @@ export default function Home() {
 			console.log("error:", error);
 		}
 	};
+
+	const uploadProfilePicture = async () => {
+		try {
+			if (images.length > 0) {
+				const image = images[0];
+				if (image.file && userId) {
+					const { data, error } = await supabase.storage
+						.from("public")
+						.upload(`${userId}/${image.file.name}`, image.file, {
+							upsert: true,
+						});
+					if (error) throw error;
+					const resp = supabase.storage.from("public").getPublicUrl(data.path);
+					const publicUrl = resp.data.publicUrl;
+					const updateUserResponse = await supabase
+						.from("users")
+						.update({ profile_picture_url: publicUrl })
+						.eq("id", userId);
+					if (updateUserResponse.error) throw error;
+				}
+			}
+		} catch (error) {
+			console.log("error:", error);
+		}
+	};
+
 	return (
 		<div className="flex flex-col e-full justify-center items-center mt-4">
 			<h1 className="text-3xl font-bold underline"> Link Monstera</h1>
@@ -94,7 +120,7 @@ export default function Home() {
 			))}
 			{isAuthenticated && (
 				<>
-					<div>
+					<div className="flex flex-col e-full justify-center items-center mt-4">
 						<h1>New Links</h1>
 						<div className="block text-sm font-medium text-grey-700 mt-4">
 							Name
@@ -130,7 +156,7 @@ export default function Home() {
 							Add new link
 						</button>
 					</div>
-					<div>
+					<div className="flex flex-col e-full justify-center items-center mt-4">
 						<h1>Add a New Profile Picture</h1>
 						<Image
 							src={images[0]["data_url"]}
@@ -146,8 +172,7 @@ export default function Home() {
 							dataURLKey="data_url"
 						>
 							{({ onImageUpload, onImageRemoveAll, isDragging, dragProps }) => (
-								// write your building UI
-								<div className="upload__image-wrapper bg-slate-300">
+								<div className="upload__image-wrapper bg-slate-300 items-center rounded-md border-transparent text-sm mt-4 p-4">
 									{images.length === 0 ? (
 										<button
 											style={isDragging ? { color: "red" } : undefined}
@@ -155,7 +180,7 @@ export default function Home() {
 											{...dragProps}
 											className="w-3/4"
 										>
-											Click or Drop here
+											Click or drop your new profile pic here!
 										</button>
 									) : (
 										<button onClick={onImageRemoveAll}>
@@ -165,6 +190,13 @@ export default function Home() {
 								</div>
 							)}
 						</ImageUploading>
+						<button
+							type="button"
+							className="inline-flex items-center rounded-md border-transparent bg-indigo-600 px-4 py-2 text-sm mt-4"
+							onClick={uploadProfilePicture}
+						>
+							Upload profile picture
+						</button>
 					</div>
 				</>
 			)}
