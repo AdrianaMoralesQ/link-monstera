@@ -15,6 +15,9 @@ export default function Home() {
 	const [url, setUrl] = useState<string | undefined>();
 	const [links, setLinks] = useState<Link[]>();
 	const [images, setImages] = useState<ImageListType>([]);
+	const [profilePictureUrl, setProfilePictureUrl] = useState<
+		string | undefined
+	>();
 
 	const onChange = (imageList: ImageListType) => {
 		setImages(imageList);
@@ -52,6 +55,25 @@ export default function Home() {
 		};
 		if (userId) {
 			getLinks();
+		}
+	}, [userId]);
+
+	useEffect(() => {
+		const getUser = async () => {
+			try {
+				const { data, error } = await supabase
+					.from("users")
+					.select("profile_picture_url")
+					.eq("id", userId);
+				if (error) throw error;
+				const profilePictureUrl = data[0]["profile_picture_url"];
+				setProfilePictureUrl(profilePictureUrl);
+			} catch (error) {
+				console.log("error:", error);
+			}
+		};
+		if (userId) {
+			getUser();
 		}
 	}, [userId]);
 
@@ -105,7 +127,15 @@ export default function Home() {
 	return (
 		<div className="flex flex-col e-full justify-center items-center mt-4">
 			<h1 className="text-3xl font-bold underline"> Link Monstera</h1>
-
+			{profilePictureUrl && (
+				<Image
+					src={profilePictureUrl}
+					alt="Profile picture"
+					height={100}
+					width={100}
+					className="rounded-full"
+				/>
+			)}
 			{links?.map((link: Link, index: number) => (
 				<button
 					className="inline-flex items-center rounded-full border-transparent bg-pink-800 px-4 py-2 text-sm mt-4 p-4"
