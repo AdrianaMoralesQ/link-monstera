@@ -16,8 +16,12 @@ export default function Login() {
 				});
 				if (resp.error) throw resp.error;
 				const userId = resp.data.user?.id;
-				// console.log("userId:", userId);
-				router.push("/");
+				const usernameResponse = await supabase
+					.from("users")
+					.select("username, id")
+					.eq("id", userId);
+				if (usernameResponse.error) throw resp.error;
+				router.push(`/${usernameResponse.data[0].username}`);
 			}
 		} catch (error) {
 			console.log("error:", error);
