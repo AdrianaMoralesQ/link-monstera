@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import supabase from "../../utils/supabaseClient";
 import Image from "next/image";
 import ImageUploading, { ImageListType } from "react-images-uploading";
 import { useRouter } from "next/router";
 import { PublicProfile } from "../../components/PublicProfile";
+import { UserContext } from "../../context";
 
 type Link = {
 	title: string;
@@ -11,41 +12,20 @@ type Link = {
 };
 
 export default function Home() {
-	const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-	const [userId, setUserId] = useState<string | undefined>();
+	const { isAuthenticated } = useContext(UserContext);
+	const { userId } = useContext(UserContext);
 	const [title, setTitle] = useState<string | undefined>();
 	const [url, setUrl] = useState<string | undefined>();
 	const [links, setLinks] = useState<Link[]>();
 	const [images, setImages] = useState<ImageListType>([]);
-	const [profilePictureUrl, setProfilePictureUrl] = useState<
-		string | undefined
-	>();
+	const { profilePictureUrl } = useContext(UserContext);
+
 	const router = useRouter();
 	const { creatorSlug } = router.query;
 
 	const onChange = (imageList: ImageListType) => {
 		setImages(imageList);
 	};
-
-	useEffect(() => {
-		const getUser = async () => {
-			try {
-				const { data, error } = await supabase.auth.getUser();
-
-				if (error) throw error;
-
-				console.log(data);
-				if (data.user) {
-					const userId = data.user?.id;
-					setIsAuthenticated(true);
-					setUserId(userId);
-				}
-			} catch (error) {
-				console.log("error:", error);
-			}
-		};
-		getUser();
-	}, []);
 
 	useEffect(() => {
 		const getLinks = async () => {
@@ -68,28 +48,6 @@ export default function Home() {
 			getLinks();
 		}
 	}, [userId]);
-
-	useEffect(() => {
-		const getUser = async () => {
-			try {
-				const { data, error } = await supabase
-					.from("users")
-					.select("id, profile_picture_url")
-					.eq("username", creatorSlug);
-				console.log("username:", creatorSlug);
-				if (error) throw error;
-				const profilePictureUrl = data[0]["profile_picture_url"];
-				const userId = data[0]["id"];
-				setProfilePictureUrl(profilePictureUrl);
-				setUserId(userId);
-			} catch (error) {
-				console.log("error:", error);
-			}
-		};
-		if (creatorSlug) {
-			getUser();
-		}
-	}, [creatorSlug]);
 
 	const addNewLink = async () => {
 		try {
@@ -247,9 +205,6 @@ export default function Home() {
 						</button>
 					</div>
 				</>
-				// )
-				// : (
-				// <PublicProfile />
 			)}
 		</div>
 	);

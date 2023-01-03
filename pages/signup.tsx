@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../context";
 import supabase from "../utils/supabaseClient";
 
 export default function Signup() {
 	const [email, setEmail] = useState<string | undefined>();
 	const [password, setPassword] = useState<string | undefined>();
-	const [username, setUserName] = useState<string | undefined>();
-
+	const [username, setUsername] = useState<string | undefined>();
 	async function signUpWithEmail() {
 		try {
 			if (email && password) {
@@ -83,7 +83,7 @@ export default function Signup() {
 					id="username"
 					className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-50 focus:ring-indigo-500 sm:text-sm"
 					placeholder="username"
-					onChange={(e) => setUserName(e.target.value)}
+					onChange={(e) => setUsername(e.target.value)}
 				/>
 			</div>
 			<button
