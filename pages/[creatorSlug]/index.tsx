@@ -3,7 +3,6 @@ import supabase from "../../utils/supabaseClient";
 import Image from "next/image";
 import ImageUploading, { ImageListType } from "react-images-uploading";
 import { useRouter } from "next/router";
-import { PublicProfile } from "../../components/PublicProfile";
 import { UserContext } from "../../context";
 
 type Link = {
@@ -37,7 +36,7 @@ export default function Home() {
 
 				if (error) throw error;
 
-				console.log("data:", data);
+				// console.log("data:", data);
 
 				setLinks(data);
 			} catch (error) {
