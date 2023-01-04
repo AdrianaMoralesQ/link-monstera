@@ -29,7 +29,7 @@ export default function Login() {
 	}
 
 	return (
-		<div className="flex flex-col e-full justify-center items-center">
+		<div className="flex flex-col e-full justify-center items-center mt-8">
 			<div>
 				<h2> Welcome back! </h2>
 			</div>
