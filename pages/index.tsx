@@ -19,10 +19,10 @@ const Landing = () => {
 				Sign up
 			</Link>
 			<h3>
-				Please check your inbox. We`&pos;`ve sent you an authentication email.{" "}
+				Please check your inbox. We`&apos;`ve sent you an authentication email.{" "}
 			</h3>
 			<h3>Sometimes our system takes up to 10 minutes to send the email.</h3>
-			<h3 className="mt-6">Already have an account?</h3>
+			<h3 className="mt-8">Already have an account?</h3>
 			<Link
 				href="/login"
 				type="link"
