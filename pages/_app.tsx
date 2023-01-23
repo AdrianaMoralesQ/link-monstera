@@ -9,7 +9,7 @@ export default function App({ Component, pageProps }: AppProps) {
 		<UserProvider>
 			<ToastContainer
 				position="top-right"
-				autoClose={5000}
+				autoClose={15000}
 				hideProgressBar={false}
 				newestOnTop={false}
 				closeOnClick
@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
 				pauseOnFocusLoss
 				draggable
 				pauseOnHover
-				theme="light"
+				theme="dark"
 			/>
 			<Nav />
 			<Component {...pageProps} />

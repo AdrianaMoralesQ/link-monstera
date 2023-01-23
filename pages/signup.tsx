@@ -12,7 +12,7 @@ export default function Signup() {
 		try {
 			if (email && password) {
 				toast(
-					"We have sent a verification email. Please check your inbox to complete sign-up!",
+					"We have sent you an authentication email. Please check your inbox to complete sign-up!",
 					{
 						hideProgressBar: true,
 						autoClose: 2000,
