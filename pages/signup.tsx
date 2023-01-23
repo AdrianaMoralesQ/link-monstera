@@ -1,6 +1,8 @@
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import { UserContext } from "../context";
 import supabase from "../utils/supabaseClient";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Signup() {
 	const [email, setEmail] = useState<string | undefined>();
@@ -9,10 +11,19 @@ export default function Signup() {
 	async function signUpWithEmail() {
 		try {
 			if (email && password) {
+				toast(
+					"We have sent a verification email. Please check your inbox to complete sign-up!",
+					{
+						hideProgressBar: true,
+						autoClose: 2000,
+						type: "success",
+					}
+				);
 				const resp = await supabase.auth.signUp({
 					email: email,
 					password: password,
 				});
+
 				if (resp.error) throw resp.error;
 
 				const userId = resp.data.user?.id;
