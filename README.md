@@ -21,19 +21,21 @@ tldr:
 
 ## Stack 💻
 
-* Next.js
+***Next.js
 
-* Supabase: 
-- Manages user session/authentication
-- Stores user links
-- Saves user profile and information
+***Supabase: 
 
-*Tailwind.CSS
+* Manages user session/authentication
+* Stores user links
+* Saves user profile and information
 
--Allows for accessible, easy to edit, in-line styling. 
+***Tailwind.CSS:
 
-* Toastify
--Easy to use library for notifications
+* Allows for accessible, easy to edit, in-line styling. 
+
+***Toastify:
+
+* Easy to use library for notifications
 
 ### Executing program 
 
