@@ -39,8 +39,7 @@ tldr:
 
 ## Executing program 
 
-* How to run the program: 
-First, run the development server:
+* Run the development server:
 
 ```bash
 npm run dev
