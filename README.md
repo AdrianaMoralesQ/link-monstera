@@ -19,7 +19,7 @@ tldr:
 -Used Supabase as a database and as an authenticator
 -Exploring new libraries
 -Creating a user-friendly, clean-coded and live application
-[Link Monstera](https://link-monstera-rcwn.vercel.app/Adriana)
+[Link Monstera](https://link-monstera.vercel.app/Adriana)
 
 ## Stack 💻
 
