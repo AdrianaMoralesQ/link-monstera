@@ -60,6 +60,5 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Adriana Morales - Full Stack
 
-[Website](https://adrianamoralesdev.netlify.app/)
-[LinkedIn](https://www.linkedin.com/in/adriana-morales-quiones/)
+[Professional Website](https://adrianamoralesdev.netlify.app/) |  [LinkedIn](https://www.linkedin.com/in/adriana-morales-quiones/)
 
