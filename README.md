@@ -38,7 +38,6 @@ tldr:
 ### Executing program 
 
 * How to run the program: 
-* 
 First, run the development server:
 
 ```bash
