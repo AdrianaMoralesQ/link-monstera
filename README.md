@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/109168765/214960359-be31834e-1436-4f26-b650-54ce0acbf484.png)
 
-Inspired by Link Tree, this personal project helped me practice TypeScript and used Next.js. It allowed me to use the Supabase API, Tailwind.CSS and Toastify for the first time!
+Inspired by Link Tree, this personal project helped me practice TypeScript and Next.js. I also got to enjoy using the Supabase API, Tailwind.CSS and Toastify for the first time!
 
 ## Description 
 
