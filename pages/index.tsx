@@ -12,14 +12,15 @@ const Landing = () => {
 Signed-in users can add links to their profile. They can then share their Link Monstera url on social media or via email. "
 					key="desc"
 				/>
-				<meta property="og:title" content="Social Title for Cool Page" />
+				<meta property="og:title" content="Link Monstera" />
 				<meta
 					property="og:description"
-					content="And a social description for our cool page"
+					content="Link Monstera is a full stack project that clones Link Tree's functionality.
+Signed-in users can add links to their profile. They can then share their Link Monstera url on social media or via email. "
 				/>
 				<meta
 					property="og:image"
-					content="https://example.com/images/cool-page.jpg"
+					content="https://link-monstera.vercel.app/_next/image?url=%2Flinkmonstera.jpg&w=1080&q=75"
 				/>
 			</Head>
 			<h1 className="text-3xl font-bold mt-6">Link Monstera</h1>
