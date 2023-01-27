@@ -16,9 +16,9 @@ I like clones - cloning takes the pressure off of creating a new app and it allo
 Clones also prevent me from spending too much designing the appearance of my application and allows me to focus on its functionality. 
 
 tldr:
--Used Supabase as a database and as an authenticator
--Exploring new libraries
--Creating a user-friendly, clean-coded and live application
+* Used Supabase as a database and for authentication
+* Exploring new libraries
+* Creating a user-friendly, clean-coded and live application
 [Link Monstera](https://link-monstera.vercel.app/Adriana)
 
 ## Stack 💻
