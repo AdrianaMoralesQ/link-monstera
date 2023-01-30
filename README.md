@@ -12,8 +12,8 @@ The app allows signed in users to add links under their profile. They can then s
 Visitors cannot edit or post links unless they create an account on Link Monstera.
 
 ## Objective 🏔️
-I like clones - cloning takes the pressure off of creating a new app and it allows me to practice what I know and learn new coding skills. 
-Clones also prevent me from spending too much designing the appearance of my application and allows me to focus on its functionality. 
+I like clones - cloning takes the pressure off of creating a new app and it allows me to practice what I know while I learn new coding skills. 
+Clones also prevent me from spending too much designing the appearance of my application, allowing me to focus on functionality instead. 
 
 tldr:
 * Used Supabase as a database and for authentication
