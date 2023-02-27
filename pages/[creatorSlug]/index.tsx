@@ -15,7 +15,7 @@ export default function Home() {
 	const { userId } = useContext(UserContext);
 	const [title, setTitle] = useState<string | undefined>();
 	const [url, setUrl] = useState<string | undefined>();
-	const [links, setLinks] = useState<Link[]>();
+	const [links, setLinks] = useState<Link[] | any>();
 	const [images, setImages] = useState<ImageListType>([]);
 	const { profilePictureUrl } = useContext(UserContext);
 
